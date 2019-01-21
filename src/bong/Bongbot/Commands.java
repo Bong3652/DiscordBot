@@ -5,10 +5,10 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 public class Commands extends ListenerAdapter {
 
-    public static String prefix = "$";
     public void recievedmsg(GuildMessageReceivedEvent event) {
+        System.out.println(event.getMessage().getContentRaw() + "hello");
         String[] msgDiv = event.getMessage().getContentRaw().split(" ");
-        if (msgDiv[0].equals(prefix)) {
+        if (msgDiv[0].equalsIgnoreCase(Bongbot.prefix)) {
             event.getChannel().sendTyping().queue();
             switch (msgDiv[1]) {
                 case "bong":
